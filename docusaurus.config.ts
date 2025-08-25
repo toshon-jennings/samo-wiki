@@ -1,29 +1,31 @@
-presets: [
-  [
-    'classic',
-    {
-      docs: {
-  sidebarPath: './sidebars.js',
-  // Skip the 3 files that are breaking the build (fix later)
-  exclude: [
-    '**/Online-Editors.md',
-    '**/💼-Portfolio.md',
-    '**/📓-Journal.md',
-  ],
-},
+import type {Config} from "@docusaurus/types";
 
-      blog: {
-        showReadingTime: true,
-        feedOptions: {
-          type: ['rss', 'atom'],
-          xslt: true,
+const config: Config = {
+  title: "SAMO-WIKI",
+  url: "https://toshon-jennings.github.io",
+  baseUrl: "/samo-wiki/",
+  favicon: "img/favicon.ico",
+  organizationName: "toshon-jennings",
+  projectName: "samo-wiki",
+  deploymentBranch: "gh-pages",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  i18n: { defaultLocale: "en", locales: ["en"] },
+  presets: [
+    [
+      "classic",
+      {
+        docs: {
+          path: "docs",
+          routeBasePath: "/",
+          sidebarPath: false
         },
-        editUrl:
-          'https://github.com/toshon-jennings/samo-wiki/tree/main/',
-      },
-      theme: {
-        customCss: './src/css/custom.css',
-      },
-    },
-  ],
-],
+        blog: false,
+        pages: {}
+      }
+    ]
+  ]
+};
+
+export default config;
+
