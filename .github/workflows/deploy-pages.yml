@@ -23,6 +23,9 @@ jobs:
           submodules: true
           fetch-depth: 0
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -31,14 +34,21 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Init submodules (defense-in-depth)
-        run: git submodule update --init --recursive
+      - name: Force submodule init (CI)
+        run: |
+          git submodule sync --recursive
+          git submodule update --init --recursive
+          git -C docs status
 
       - name: List docs files (debug)
         run: |
-          ls -la docs | head -n 50
-          echo "--- count ---"
+          set -e
+          echo "Top-level docs listing:"
+          ls -la docs | sed -n '1,120p'
+          echo "--- file count ---"
           find docs -type f | wc -l
+          echo "--- first 80 files ---"
+          find docs -type f | sort | sed -n '1,80p'
 
       - name: Build Docusaurus
         run: npm run build
