@@ -34,11 +34,7 @@ const config: Config = {
 
   // Enable GitHub-flavored Markdown (tables, task lists, strikethrough, etc.)
   // Docs: https://docusaurus.io/docs/markdown-features/plugins
-  markdown: {
-    // Using CommonJS require is fine in the Node context
-    remarkPlugins: [require('remark-gfm')],
-  },
-
+  
   presets: [
     [
       'classic',
