@@ -22,7 +22,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout wiki into docs/
+      - name: Fetch wiki into docs/
         uses: actions/checkout@v4
         with:
           repository: toshon-jennings/samo-wiki.wiki
