@@ -34,6 +34,12 @@ jobs:
       - name: Init submodules (defense-in-depth)
         run: git submodule update --init --recursive
 
+      - name: List docs files (debug)
+        run: |
+          ls -la docs | head -n 50
+          echo "--- count ---"
+          find docs -type f | wc -l
+
       - name: Build Docusaurus
         run: npm run build
 
