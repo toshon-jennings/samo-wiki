@@ -3,10 +3,15 @@ presets: [
     'classic',
     {
       docs: {
-        sidebarPath: './sidebars.js',
-        // Temporarily disable docs to avoid parsing errors:
-        include: [],
-      },
+  sidebarPath: './sidebars.js',
+  // Skip the 3 files that are breaking the build (fix later)
+  exclude: [
+    '**/Online-Editors.md',
+    '**/💼-Portfolio.md',
+    '**/📓-Journal.md',
+  ],
+},
+
       blog: {
         showReadingTime: true,
         feedOptions: {
